@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Fjalla One', sans-serif;
+            background: linear-gradient(to bottom, #405166 0%, #656f6f 100%);
+        }
+
+        .container {
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            display: block;
+            position: absolute;
+            /* max-width: 225px; */
+            /* max-width: 500px; */
+            text-align: left;
+        }
+
+        .button {
+            font-size: 32px;
+            float: left;
+            position: relative;
+            bottom: -65px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-10deg);
+            color: #e55643;
+            text-transform: uppercase;
+            opacity: 0;
+            visibility: hidden;
+            cursor: pointer;
+        }
+
+        .button span {
+            transform: skew(-10deg);
+            display: block;
+            float: left;
+            text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px;
+        }
+
+        h1 {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 42px;
+            margin: 0;
+            line-height: 47px;
+            letter-spacing: 2px;
+        }
+
+        .title {
+            transform: translateX(-50%) rotate(-10deg);
+            display: block;
+            /* float: left; */
+            left: 50%;
+            position: relative;
+        }
+
+        .title div {
+            transform: skew(-10deg);
+            display: block;
+            float: left;
+            text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px, #533d4a 5px 5px, #533d4a 6px 6px;
+            min-width: 10px;
+            min-height: 10px;
+            position: relative;
+        }
+
+        .title.red {
+            color: #e55643;
+        }
+
+        .title.green {
+            /* color: #2b9f5e; */
+            color: #2b9f5e;
+        }
+
+        .title.yellow {
+            color: #f1c83c;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
+
+<script>
+
+    var speed = 0.1;
+
+    $(document).ready(function () {
+        console.log('doc ready');
+        $(".title").lettering();
+        // $(".button").lettering();
+        animation();
+    });
+
+    $('.button').click(function () {
+        animation();
+    });
+
+    function animation() {
+        var title1 = new TimelineMax();
+        title1.to(".button", 0, { visibility: 'hidden', opacity: 0 })
+        title1.staggerFromTo(".title span", 1,
+            { ease: Back.easeOut.config(1.7), opacity: 0, bottom: -80 },
+            { ease: Back.easeOut.config(1.7), opacity: 1, bottom: 0 }, speed);
+        title1.to(".button", 0.2, { visibility: 'visible', opacity: 1 })
+    }
+
+</script>
+
+</head>
+
+<body>
+    <section class="container">
+        <h1>
+            <!-- 
+            Two Expeditions
+            Darkest Africa
+                Tamed
+                Treasures discovered
+            Sandy Sahara
+                Desert wild
+                Hidden gems
+            Courage rewarded
+            Savage losses
+            There is still much to discover
+            The brave will be rewarded
+            For it is her birthday
+            -->
+
+            <div class="title red">Two expeditions</div>
+            <div class="title green">Darkest Africa</div>
+            <div class="title yellow">Desert Sahara</div>
+            <div class="title green">Courage rewarded</div>
+            <div class="title yellow">Failure scorned</div>
+            <div class="title green">Treasures discovered</div>
+            <div class="title yellow">Lost in the wild</div>
+            <div class="title yellow">The brave will be rewarded</div>
+            <div class="title yellow">Just look in the sand</div>
+            <div class="title red">For it is her birthday</div>
+        </h1>
+
+        <!-- <div id="restart-me" class="button">again</div> -->
+    </section>
+</body>
+
+</html>
